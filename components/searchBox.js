@@ -11,7 +11,7 @@ const api = {
     }
 }
 
-const SearchBox = () => {
+const SearchBox = ({ handleClick }) => {
 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState(null);
@@ -26,9 +26,6 @@ const SearchBox = () => {
             .catch(error => console.log('error at 25', error));
     }, [query])
 
-    const handleClick = () => {
-        console.log('shina')
-    }
 
     return (
         <>
@@ -39,7 +36,7 @@ const SearchBox = () => {
                         {results.map(city => {
                             return (
                                 <li key={city.Key}>
-                                    <a onClick={handleClick}>
+                                    <a onClick={() => handleClick(city.Key)}>
                                         {city.LocalizedName}
                                     </a>
                                 </li>

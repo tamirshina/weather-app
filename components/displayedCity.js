@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import CurrentWeather from './currentWeather'
+import { fetchData, formatUrl } from '../utilities/util'
 import Forecast from './forecast'
 
 const DisplayedCity = ({ city }) => {
@@ -8,16 +9,15 @@ const DisplayedCity = ({ city }) => {
     const [current, setCurrent] = useState(null)
 
     useEffect(() => {
-        const url = city ? city : 'tel-aviv'
-        fetch('./currentWeather.txt')
-            .then(response => response.json())
-            .then(result => setCurrent(result[0]))
-            .catch(error => console.log('error at 13', error));
 
-        fetch('./fiveDays.txt')
-            .then(response => response.json())
+        fetchData(formatUrl('current', city))
+            .then(result => setCurrent(result[0]))
+            .catch(error => console.log(error));
+
+        fetchData(formatUrl('forecast', city))
             .then(result => setForecast(result))
-            .catch(error => console.log('error at 18', error));
+            .catch(error => console.log(error));
+
     }, [city])
 
     return <>
