@@ -1,6 +1,7 @@
 import config from '../api/config'
 
 const { api } = config
+
 export async function fetchData(url) {
 
     const response = await fetch(url)
@@ -8,25 +9,47 @@ export async function fetchData(url) {
     return await response.json()
 }
 
-export function formatUrl(type, city) {
+export function formatUrl(type, uniqueParam) {
     const data = {
         apikey: api.apiKey,
         language: 'en',
-        details: false
     }
 
     switch (type) {
         case 'current':
+            data['details'] = false
             const currentParams = new URLSearchParams(data);
-            return api.base + api.paths.current + city + '?' + currentParams
+            return api.base + api.paths.current + uniqueParam + '?' + currentParams
 
         case 'forecast':
+            data['details'] = false
             data['metric'] = true
             const fiveDaysParams = new URLSearchParams(data);
-            return api.base + api.paths.fiveDays + city + '?' + fiveDaysParams
+            return api.base + api.paths.fiveDays + uniqueParam + '?' + fiveDaysParams
 
+        case 'autoComplete':
+            data['q'] = uniqueParam
+            const completeParams = new URLSearchParams(data);
+            return api.base + api.paths.autocomplete + '?' + completeParams
         default:
-            return api.base + api.paths.current + city + '?'
+            return api.base + api.paths.current + uniqueParam + '?'
     }
+}
 
+export function setToLocalStorage(key, value) {
+    if (typeof window !== "undefined") {
+        window.localStorage.setItem(key, value)
+    }
+}
+
+export function getFromLocalStorage(key) {
+    if (typeof window !== "undefined") {
+        const item = window.localStorage.getItem(key)
+        console.log('util ---', item)
+        if (item === "undefined" || !item) {
+            return null
+        } else {
+            return JSON.parse(item)
+        }
+    }
 }

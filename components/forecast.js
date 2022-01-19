@@ -1,8 +1,24 @@
+import { useState, useEffect } from 'react'
+import { fetchData, formatUrl } from '../utilities/util'
 
-const Forecast = ({ forecast }) => {
+const Forecast = ({ city }) => {
+
+    const [forecast, setForecast] = useState(null)
+
+    useEffect(() => {
+
+        // fetchData(formatUrl('forecast', city))
+        //     .then(result => setForecast(result))
+        //     .catch(error => console.log(error));
+
+        fetch('./fiveDays.txt')
+            .then(response => response.json())
+            .then(result => setForecast(result))
+            .catch(error => console.log('error at 25', error));
+
+    }, [city])
 
     return <>
-        {console.log(forecast, 'fff')}
         <h2>5 day forecast</h2>
         {
             forecast && (

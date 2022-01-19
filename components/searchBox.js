@@ -1,15 +1,6 @@
 import { useState, useEffect } from 'react'
+import { fetchData, formatUrl } from '../utilities/util'
 import styles from '../styles/Home.module.css'
-
-const api = {
-    base: 'http://dataservice.accuweather.com',
-    apiKey: 'iI8yNmeTNGClggS3rSe2WVib3gjAhnOi',
-    paths: {
-        autocomplete: '/locations/v1/cities/autocomplete',
-        current: 'currentconditions/v1/',
-        fiveDays: '/forecasts/v1/daily/5day/'
-    }
-}
 
 const SearchBox = ({ handleClick }) => {
 
@@ -18,18 +9,30 @@ const SearchBox = ({ handleClick }) => {
 
     useEffect(() => {
 
-        //fetch(api.base + api.paths.autocomplete + "?apikey=" + api.apiKey + "&q=" + query + "&language=en")
         if (query === "") return
+        // fetchData(formatUrl('autoComplete', query))
+        //     .then(result => setResults(result))
+        //     .catch(error => console.log('error at searchBox', error));
+
         fetch('./autocomplete.txt')
             .then(response => response.json())
             .then(result => setResults(result))
             .catch(error => console.log('error at 25', error));
     }, [query])
 
+    const handleChange = ({ value }) => {
+
+        if (value === "") {
+            setResults(null)
+            setQuery("")
+        } else setQuery(value)
+
+    }
+
 
     return (
         <>
-            <input type='text' value={query} onChange={(e) => setQuery(e.target.value)} className={styles.searchBox} />
+            <input type='text' value={query} onChange={(e) => handleChange(e.target)} className={styles.searchBox} />
             {
                 results && (
                     <ul>

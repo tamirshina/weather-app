@@ -1,5 +1,13 @@
 import * as types from './types'
 
+
+export const addToFavorite = (city) => (dispatch) =>
+  dispatch({
+    type: types.ADD,
+    payload: { city },
+  })
+
+
 // INITIALIZES CLOCK ON SERVER
 export const serverRenderClock = () => (dispatch) =>
   dispatch({

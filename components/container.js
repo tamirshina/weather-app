@@ -4,7 +4,7 @@ import DisplayedCity from './displayedCity'
 import styles from '../styles/Home.module.css'
 const Container = () => {
 
-    const [city, setCity] = useState(230611) //(215854)
+    const [city, setCity] = useState(215854) //(215854)
 
     const handleClick = (cityKey) => {
         setCity(cityKey)
