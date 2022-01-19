@@ -7,6 +7,12 @@ export const addToFavorite = (city) => (dispatch) =>
     payload: { city },
   })
 
+export const removeFromFavorites = (city) => (dispatch) =>
+  dispatch({
+    type: types.REMOVE,
+    payload: { city },
+  })
+
 
 // INITIALIZES CLOCK ON SERVER
 export const serverRenderClock = () => (dispatch) =>

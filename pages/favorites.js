@@ -1,12 +1,24 @@
-
-import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react'
+import FavoriteCard from '../components/favorites/favoriteCard'
+import { setToLocalStorage, getFromLocalStorage, checkCityInArray } from '../utilities/util'
 const Favorites = () => {
 
-    const state = useSelector((state) => state)
+    const [favorites] = useState(() => getFromLocalStorage('favorites'))
+
     return (
         <>
-            <h1>shina</h1>
-            <code>{JSON.stringify(state, null, 4)}</code>
+            <h1>Favorite cities</h1>
+            {
+                favorites &&
+                <ul>
+                    {
+                        favorites.map(fav => {
+                            return <FavoriteCard key={fav.cityId} cityName={fav.cityName} cityId={fav.cityId} />
+                        })
+                    }
+
+                </ul>
+            }
         </>
     )
 }

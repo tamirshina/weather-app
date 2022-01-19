@@ -4,10 +4,12 @@ import DisplayedCity from './displayedCity'
 import styles from '../styles/Home.module.css'
 const Container = () => {
 
-    const [city, setCity] = useState(215854) //(215854)
+    const [city, setCity] = useState(215854)
+    const [cityName, setCityName] = useState('Tel-Aviv')
 
-    const handleClick = (cityKey) => {
+    const handleClick = (cityKey, cityName) => {
         setCity(cityKey)
+        setCityName(cityName)
     }
 
     return (
@@ -16,7 +18,7 @@ const Container = () => {
                 Welcome to <a href="https://nextjs.org">Next.js!</a>
             </h1>
             <SearchBox handleClick={handleClick} />
-            <DisplayedCity city={city} />
+            <DisplayedCity city={city} cityName={cityName} />
         </div>
     )
 }

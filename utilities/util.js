@@ -53,3 +53,15 @@ export function getFromLocalStorage(key) {
         }
     }
 }
+
+export const checkCityInArray = (arr, cityId) => {
+
+    console.log(arr, 'wtf')
+
+    if (arr === null || arr === undefined || arr.length === 0) return false
+    if (arr.find(city => city.cityId === cityId)) {
+        return true
+    } else {
+        return false
+    }
+}

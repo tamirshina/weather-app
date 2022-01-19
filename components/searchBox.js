@@ -39,7 +39,7 @@ const SearchBox = ({ handleClick }) => {
                         {results.map(city => {
                             return (
                                 <li key={city.Key}>
-                                    <a onClick={() => handleClick(city.Key)}>
+                                    <a onClick={() => handleClick(city.Key, city.LocalizedName)}>
                                         {city.LocalizedName}
                                     </a>
                                 </li>

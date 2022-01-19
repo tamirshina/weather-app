@@ -7,14 +7,14 @@ const Forecast = ({ city }) => {
 
     useEffect(() => {
 
-        // fetchData(formatUrl('forecast', city))
-        //     .then(result => setForecast(result))
-        //     .catch(error => console.log(error));
-
-        fetch('./fiveDays.txt')
-            .then(response => response.json())
+        fetchData(formatUrl('forecast', city))
             .then(result => setForecast(result))
-            .catch(error => console.log('error at 25', error));
+            .catch(error => console.log('error in forecast', error));
+
+        // fetch('./fiveDays.txt')
+        //     .then(response => response.json())
+        //     .then(result => setForecast(result))
+        //     .catch(error => console.log('error at 25', error));
 
     }, [city])
 

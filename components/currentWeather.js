@@ -6,13 +6,13 @@ const CurrentWeather = ({ city }) => {
 
     useEffect(() => {
 
-        // fetchData(formatUrl('current', city))
+        fetchData(formatUrl('current', city))
+            .then(result => setCurrent(result[0]))
+            .catch(error => console.log('error in currentWeather', error));
+        // fetch('./currentWeather.txt')
+        //     .then(response => response.json())
         //     .then(result => setCurrent(result[0]))
-        //     .catch(error => console.log(error));
-        fetch('./currentWeather.txt')
-            .then(response => response.json())
-            .then(result => setCurrent(result))
-            .catch(error => console.log('error at 25', error));
+        //     .catch(error => console.log('error at 25', error));
 
     }, [city])
 
