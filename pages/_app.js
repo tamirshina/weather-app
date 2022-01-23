@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { useStore } from '../app/store'
+import { ToastProvider } from "react-toast-notifications";
 import Router from "next/router";
 import Header from '../components/layout/header'
 import Loader from '../components/layout/Loader'
@@ -31,14 +32,16 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      {
-        loading ? <Loader /> : (
-          <>
-            <Header />
-            <Component {...pageProps} />
-          </>
-        )
-      }
+      <ToastProvider autoDismiss={true} autoDismissTimeout="2000">
+        {
+          loading ? <Loader /> : (
+            <>
+              <Header />
+              <Component {...pageProps} />
+            </>
+          )
+        }
+      </ToastProvider>
     </Provider>
   )
 }

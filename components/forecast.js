@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useToasts } from "react-toast-notifications"
 import { fetchData, formatUrl } from '../utilities/util'
 
 const Forecast = () => {
 
     const cityId = useSelector((state) => state.cityData.cityId)
     const [forecast, setForecast] = useState(null)
+    const { addToast } = useToasts();
 
     useEffect(() => {
-
         fetchData(formatUrl('forecast', cityId))
             .then(result => setForecast(result))
-            .catch(error => console.log('error in forecast', error));
+            .catch(error => addToast(error, { appearance: "warning" }))
     }, [cityId])
 
     return <>

@@ -11,12 +11,15 @@ const FavoriteCard = ({ cityName, cityId }) => {
 
     return (
         <li key={cityId} className={styles.card}>
-            <Link href='/' passHref>
-                <div onClick={() => dispatch(changeCity(cityId, cityName))} className='flex space-x-8'>
-                    <CurrentWeather cityId={cityId} cityName={cityName} />
-                    <FavoriteBtn cityId={cityId} cityName={cityName} />
-                </div>
-            </Link>
+            <div className='flex space-x-8'>
+                <Link href='/' passHref>
+                    <div onClick={() => dispatch(changeCity(cityId, cityName))} className='flex space-x-8'>
+                        <CurrentWeather cityId={cityId} cityName={cityName} />
+
+                    </div>
+                </Link>
+                <FavoriteBtn cityId={cityId} cityName={cityName} />
+            </div>
             <h3>City ID {cityId}</h3>
         </li>
     )

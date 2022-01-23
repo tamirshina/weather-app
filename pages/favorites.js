@@ -11,7 +11,7 @@ const Favorites = () => {
             <h1 className={styles.title}>Favorite cities</h1>
             {
                 favorites &&
-                <ul className='flex flex-wrap lg:justify-center '>
+                <ul className='flex flex-wrap'>
                     {
                         favorites.map(fav => {
                             return <FavoriteCard key={fav.cityId} cityName={fav.cityName} cityId={fav.cityId} />

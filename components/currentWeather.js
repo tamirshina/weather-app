@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
 import { fetchData, formatUrl } from '../utilities/util'
+import { useToasts } from "react-toast-notifications"
 const CurrentWeather = ({ cityId, cityName }) => {
 
     const [current, setCurrent] = useState(null)
+    const { addToast } = useToasts();
 
     useEffect(() => {
-
         fetchData(formatUrl('current', cityId))
             .then(result => setCurrent(result[0]))
-            .catch(error => console.log('error in currentWeather', error))
+            .catch(error => addToast(error, { appearance: "warning" }));
     }, [cityId])
 
     return (

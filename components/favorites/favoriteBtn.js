@@ -1,6 +1,5 @@
 import { setToLocalStorage, getFromLocalStorage } from '../../utilities/util'
 import { useState, useEffect } from 'react'
-
 const checkCityInArray = (arr, cityId) => {
 
     if (arr === null || arr === undefined || arr.length === 0) return false
