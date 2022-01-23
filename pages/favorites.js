@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import FavoriteCard from '../components/favorites/favoriteCard'
 import styles from '../styles/Home.module.css'
-import { setToLocalStorage, getFromLocalStorage, checkCityInArray } from '../utilities/util'
+import { getFromLocalStorage } from '../utilities/util'
 const Favorites = () => {
 
     const [favorites] = useState(() => getFromLocalStorage('favorites'))

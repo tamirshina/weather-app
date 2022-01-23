@@ -1,23 +1,25 @@
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { changeCity } from '../app/actions'
 import { fetchData, formatUrl } from '../utilities/util'
-import styles from '../styles/Home.module.css'
 
-const SearchBox = ({ handleClick }) => {
+const SearchBox = () => {
 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState(null);
+    const dispatch = useDispatch()
 
     useEffect(() => {
 
         if (query === "") return
-        // fetchData(formatUrl('autoComplete', query))
-        //     .then(result => setResults(result))
-        //     .catch(error => console.log('error at searchBox', error));
-
-        fetch('./autocomplete.txt')
-            .then(response => response.json())
+        fetchData(formatUrl('autoComplete', query))
             .then(result => setResults(result))
-            .catch(error => console.log('error at 25', error));
+            .catch(error => console.log('error at searchBox', error));
+
+        // fetch('./autocomplete.txt')
+        //     .then(response => response.json())
+        //     .then(result => setResults(result))
+        //     .catch(error => console.log('error at 25', error));
     }, [query])
 
     const handleChange = ({ value }) => {
@@ -40,7 +42,7 @@ const SearchBox = ({ handleClick }) => {
                             {results.slice(0, 5).map(city => {
                                 return (
                                     <li key={city.Key} className='pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900'>
-                                        <a onClick={() => handleClick(city.Key, city.LocalizedName)}>
+                                        <a onClick={() => dispatch(changeCity(city.Key, city.LocalizedName))}>
                                             {city.LocalizedName}
                                         </a>
                                     </li>

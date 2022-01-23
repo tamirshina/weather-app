@@ -1,37 +1,9 @@
 import * as types from './types'
 
 
-export const addToFavorite = (city) => (dispatch) =>
+export const changeCity = (cityId, cityName) => (dispatch) =>
   dispatch({
-    type: types.ADD,
-    payload: { city },
+    type: types.CHANGE,
+    payload: { cityId, cityName },
   })
 
-export const removeFromFavorites = (city) => (dispatch) =>
-  dispatch({
-    type: types.REMOVE,
-    payload: { city },
-  })
-
-
-// INITIALIZES CLOCK ON SERVER
-export const serverRenderClock = () => (dispatch) =>
-  dispatch({
-    type: types.TICK,
-    payload: { light: false, ts: Date.now() },
-  })
-
-// INITIALIZES CLOCK ON CLIENT
-export const startClock = () => (dispatch) =>
-  setInterval(() => {
-    dispatch({ type: types.TICK, payload: { light: true, ts: Date.now() } })
-  }, 1000)
-
-// INCREMENT COUNTER BY 1
-export const incrementCount = () => ({ type: types.INCREMENT })
-
-// DECREMENT COUNTER BY 1
-export const decrementCount = () => ({ type: types.DECREMENT })
-
-// RESET COUNTER
-export const resetCount = () => ({ type: types.RESET })

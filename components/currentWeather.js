@@ -6,19 +6,14 @@ const CurrentWeather = ({ cityId, cityName }) => {
 
     useEffect(() => {
 
-        // fetchData(formatUrl('current', cityId))
-        //     .then(result => setCurrent(result[0]))
-        //     .catch(error => console.log('error in currentWeather', error));
-        fetch('./currentWeather.txt')
-            .then(response => response.json())
+        fetchData(formatUrl('current', cityId))
             .then(result => setCurrent(result[0]))
-            .catch(error => console.log('error at 25', error));
-
+            .catch(error => console.log('error in currentWeather', error))
     }, [cityId])
 
     return (
         <>
-            {current && <h2 className='sticky text-4xl font-normal leading-normal mt-10 mb-5 text-blue-600/75 ml-[13%]'>{cityName} Is Currently {current.WeatherText}</h2>}
+            {current && <h2 className='sticky text-4xl font-normal leading-normal mt-10 mb-5 text-blue-600/75'>{cityName} Is Currently {current.WeatherText}</h2>}
         </>
     )
 }

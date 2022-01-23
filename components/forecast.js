@@ -1,21 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { fetchData, formatUrl } from '../utilities/util'
 
-const Forecast = ({ cityId }) => {
+const Forecast = () => {
 
+    const cityId = useSelector((state) => state.cityData.cityId)
     const [forecast, setForecast] = useState(null)
 
     useEffect(() => {
 
-        // fetchData(formatUrl('forecast', cityId))
-        //     .then(result => setForecast(result))
-        //     .catch(error => console.log('error in forecast', error));
-
-        fetch('./fiveDays.txt')
-            .then(response => response.json())
+        fetchData(formatUrl('forecast', cityId))
             .then(result => setForecast(result))
-            .catch(error => console.log('error at 25', error));
-
+            .catch(error => console.log('error in forecast', error));
     }, [cityId])
 
     return <>

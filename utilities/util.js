@@ -45,7 +45,6 @@ export function setToLocalStorage(key, value) {
 export function getFromLocalStorage(key) {
     if (typeof window !== "undefined") {
         const item = window.localStorage.getItem(key)
-        console.log('util ---', item)
         if (item === "undefined" || !item) {
             return null
         } else {
@@ -55,8 +54,6 @@ export function getFromLocalStorage(key) {
 }
 
 export const checkCityInArray = (arr, cityId) => {
-
-    console.log(arr, 'wtf')
 
     if (arr === null || arr === undefined || arr.length === 0) return false
     if (arr.find(city => city.cityId === cityId)) {
