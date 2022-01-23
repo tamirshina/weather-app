@@ -1,4 +1,3 @@
-import styles from '../../styles/Home.module.css'
 import { setToLocalStorage, getFromLocalStorage } from '../../utilities/util'
 import { useState, useEffect } from 'react'
 
