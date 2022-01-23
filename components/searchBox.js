@@ -35,7 +35,7 @@ const SearchBox = () => {
     return (
         <div className='inline-flex flex-col justify-center relative text-gray-500 my-4 min-h-[200px]'>
             <div className='relative'>
-                <input type='text' value={query} onChange={(e) => handleChange(e.target)} placeholder='search for city' className='w-80 h-8  rounded border border-gray-500 focus:bg-white focus:outline-none focus:ring-2 focus:bg-green-50 focus:border-transparent' />
+                <input type='text' value={query} onChange={(e) => handleChange(e.target)} placeholder='search for a city' className='placeholder: pl-2 w-80 h-8  rounded border border-gray-500 focus:bg-white focus:outline-none focus:ring-2 focus:bg-green-50 focus:border-transparent' />
                 {
                     results && (
                         <ul className='bg-white border border-gray-100 w-full mt-2'>
