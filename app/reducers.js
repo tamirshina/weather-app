@@ -14,15 +14,15 @@ const counterReducer = (state = 0, { type }) => {
       return state
   }
 }
-function removeFunc(state, city) {
 
-  let newArr = state.slice()
-  let index = newArr.findIndex(el => el === city)
-  return newArr.splice(index, 1)
+// INITIAL CITY STATE
+const initialCityState = {
+  cityId: 215854,
+  cityName: 'Tel-Aviv',
 }
 
-//FAVORITES REDUCER
-const favoritesReducer = (state = [], { type, payload }) => {
+//CITY REDUCER
+const displayedCityReducer = (state = initialCityState, { type, payload }) => {
   switch (type) {
     case types.ADD:
       return [...state, payload]
@@ -57,7 +57,7 @@ const timerReducer = (state = initialTimerState, { type, payload }) => {
 const reducers = {
   counter: counterReducer,
   timer: timerReducer,
-  favorites: favoritesReducer
+  cityData: displayedCityReducer
 }
 
 export default combineReducers(reducers)

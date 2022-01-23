@@ -15,7 +15,7 @@ const Container = () => {
     return (
         <div className={styles.main}>
             <h1 className={styles.title}>
-                Welcome to <a href="https://nextjs.org">Next.js!</a>
+                Welcome to <span href="#">WeatherApp!</span>
             </h1>
             <SearchBox handleClick={handleClick} />
             <DisplayedCity city={city} cityName={cityName} />

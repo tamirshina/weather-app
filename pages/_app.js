@@ -1,9 +1,8 @@
 import '../styles/globals.css'
-import 'bootstrap/dist/css/bootstrap.css'
-//import 'bootstrap-icons/font/fonts/bootstrap-icons.css'
 
 import { Provider } from 'react-redux'
 import { useStore } from '../app/store'
+import Header from '../components/header'
 
 function MyApp({ Component, pageProps }) {
 
@@ -11,6 +10,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
+      <Header />
       <Component {...pageProps} />
     </Provider>
   )

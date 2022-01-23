@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import FavoriteCard from '../components/favorites/favoriteCard'
+import styles from '../styles/Home.module.css'
 import { setToLocalStorage, getFromLocalStorage, checkCityInArray } from '../utilities/util'
 const Favorites = () => {
 
@@ -7,10 +8,10 @@ const Favorites = () => {
 
     return (
         <>
-            <h1>Favorite cities</h1>
+            <h1 className={styles.title}>Favorite cities</h1>
             {
                 favorites &&
-                <ul>
+                <ul className='flex flex-wrap lg:justify-center '>
                     {
                         favorites.map(fav => {
                             return <FavoriteCard key={fav.cityId} cityName={fav.cityName} cityId={fav.cityId} />

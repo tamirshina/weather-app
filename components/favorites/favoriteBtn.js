@@ -1,4 +1,4 @@
-import style from '../../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import { setToLocalStorage, getFromLocalStorage } from '../../utilities/util'
 import { useState, useEffect } from 'react'
 
@@ -49,12 +49,9 @@ const FavoriteBtn = ({ cityId, cityName }) => {
     }
 
     return (
-        <div>
-            <label htmlFor="id-of-input" className={style.customCheckbox}>
+        <div className=''>
+            <label htmlFor="id-of-input" className=''>
                 <input type="checkbox" id="id-of-input" checked={isChecked} onChange={(e) => handleChange(e.target)} />
-                <i className="glyphicon glyphicon-star-empty"></i>
-                <i className="glyphicon glyphicon-star"></i>
-                <span>Favorite</span>
             </label>
         </div>
     )
