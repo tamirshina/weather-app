@@ -13,7 +13,6 @@ const CardContainer = ({ cityName, cityId }) => {
                 <CurrentWeather cityId={cityId} cityName={cityName} />
                 <FavoriteBtn cityId={cityId} cityName={cityName} />
             </div>
-
         </>
     )
 }

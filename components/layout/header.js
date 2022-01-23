@@ -14,7 +14,7 @@ const Header = () => {
         <div className="flex items-center justify-between flex-wrap bg-blue-600/75 p-6">
             <div className="flex items-center flex-shrink-0 text-white mr-6">
                 <Logo />
-                <Link href="/">
+                <Link href="/" passHref>
                     <div className="font-semibold text-xl cursor-pointer tracking-tight">Weather App</div>
                 </Link>
             </div>
